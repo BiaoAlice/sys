@@ -26,6 +26,8 @@ export default {
         width:100%;
         height: auto;
     }
-  
+    .swiper{
+        margin-bottom: 10px;
+    }
 </style>
 

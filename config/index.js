@@ -23,7 +23,14 @@ module.exports = {
         pathRewrite: {
           '^/train': ''
         }
-      }
+      },
+      '/jdList': {
+        target: 'http://apis.haoservice.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/jdList': ''
+        }
+      },
     },
 
     // Various Dev Server settings

@@ -31,4 +31,7 @@ export default {
         height: 80px;
     }
 }
+.el-tabs__header{
+  padding-left: 12px;
+}
 </style>
