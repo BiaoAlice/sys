@@ -5,7 +5,7 @@
                 <el-form-item label="学号" id="number">
                     <el-input 
                         @blur="tip"
-                        v-model="studentID" 
+                        v-model="studentId" 
                         placeholder="请输入学号"
                     ></el-input>
                 </el-form-item>
@@ -14,7 +14,7 @@
                 </el-form-item>
                 <el-form-item label="密码">
                     <el-input
-                        v-model="psd" 
+                        v-model="studentPsd" 
                         type="password"
                         placeholder="请输入密码"
                     ></el-input>
@@ -31,14 +31,14 @@
         name: 'Login',
         data () {
             return{
-                studentID:'',
-                psd:''
+                studentId:'',
+                studentPsd:''
             }
         },
         methods:{
             tip() {
                 let reg= /^(2015)\d{8}$/;
-                if(!reg.test(this.studentID)){
+                if(!reg.test(this.studentId)){
                     this.$message({
                     duration: 2000,
                     showClose: true,
@@ -49,7 +49,7 @@
             },
             submit () {
                 let reg= /^(2015)\d{8}$/;
-                if(this.studentID=='' || this.psd =='' || !reg.test(this.studentID)){
+                if(this.studentId=='' || this.studentPsd =='' || !reg.test(this.studentId)){
                     this.$message({
                         duration: 2000,
                         showClose: true,
@@ -57,7 +57,25 @@
                         type:'error'
                     })
                 }else{
-                    console.log('验证成功');
+                    let studentId = this.studentId;
+                    let studentPsd = this.studentPsd;
+                    this.http.post(`/api/user/login`,{
+                                studentId,
+                                studentPsd
+                            })
+                             .then((res)=>{
+                                 if(res.data.code == 0){
+                                      this.$message({
+                                        duration: 2000,
+                                        showClose: true,
+                                        message:res.data.msg,
+                                        type:'error'
+                                    })
+                                 }else{
+                                     localStorage.setItem('token',res.data.token);
+                                     this.$router.push('/home');
+                                 }
+                             })
                 }
             }
         }

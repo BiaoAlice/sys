@@ -10,10 +10,24 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:3000',
+        pathRewrite: {
+          '^/api': ''
+        }
+      },
+      '/train': {
+        target: 'http://apicloud.mob.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/train': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
-    host: 'localhost', // can be overwritten by process.env.HOST
+    host:'localhost', // can be overwritten by process.env.HOST  '192.168.1.106',
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

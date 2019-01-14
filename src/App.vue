@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <router-view name="nav"></router-view>
     <router-view/>
   </div>
 </template>
@@ -9,7 +10,6 @@ export default {
   name: 'App'
 }
 </script>
-
 <style>
   *{
     margin:0;
@@ -26,4 +26,9 @@ export default {
  .el-form-item__label{
         text-align: center;
     }
+  @media screen and (max-width:500px){
+    .el-carousel__container{
+        height: 80px;
+    }
+}
 </style>
