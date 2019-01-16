@@ -2,6 +2,7 @@
   <div id="app">
     <router-view name="nav"></router-view>
     <router-view/>
+    <router-view name="bottom"></router-view>
   </div>
 </template>
 
@@ -33,5 +34,16 @@ export default {
 }
 .el-tabs__header{
   padding-left: 12px;
+}
+.el-tabs__item{
+  padding: 0px;
+  padding-right: 10px;
+}
+@media screen and (max-width:500px){
+    .el-loading-spinner{
+      position: relative;
+      /* top:-20px; */
+      top:160px;
+    }
 }
 </style>

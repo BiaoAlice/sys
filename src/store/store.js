@@ -4,11 +4,15 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
-        cityId:'0'
+        cityId:'0',
+        userName:''
     },
     mutations:{
         changeCityId(state,value){
             state.cityId =value
+        },
+        changeUserName(state,value){
+            state.userName =value
         }
     }
 })

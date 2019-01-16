@@ -5,12 +5,46 @@
                 <h1>
                     <img src="../assets/home/logo.jpg" alt="">
                 </h1>
-                <ul>
+                <ul class="show">
+                    <li>
+                        票务系统
+                    </li>
+                </ul>
+                <ul class="hidden">
                     <li
                         v-for="(item,index) in nav"
                         :key="index"
                     >
                     {{item}}
+                    </li>
+                </ul>
+                <ul class="right hidden">
+                    <li>
+                          <el-dropdown>
+                        <span class="el-dropdown-link">
+                            {{userName}}<i class="el-icon-arrow-down el-icon--right"></i>
+                        </span>
+                        <el-dropdown-menu slot="dropdown">
+                            <el-dropdown-item>个人中心</el-dropdown-item>
+                            <el-dropdown-item divided>注销</el-dropdown-item>
+                        </el-dropdown-menu>
+                        </el-dropdown>
+                    </li>
+                </ul>
+                <ul class="right show">
+                    <li>
+                        <el-dropdown  trigger="click">
+                           
+                                <i class="el-icon-caret-bottom el-icon--right"></i>
+                        
+                            <el-dropdown-menu slot="dropdown">
+                                <el-dropdown-item>首页</el-dropdown-item>
+                                <el-dropdown-item>飞机票</el-dropdown-item>
+                                <el-dropdown-item>火车票</el-dropdown-item>
+                                <el-dropdown-item>个人中心</el-dropdown-item>
+                                <el-dropdown-item divided>注销</el-dropdown-item>
+                            </el-dropdown-menu>
+                        </el-dropdown>
                     </li>
                 </ul>
             </el-col>
@@ -19,27 +53,35 @@
 </template>
 
 <script>
+import {mapState} from 'vuex'
 export default {
     name:'Nav',
     data () {
         return{
             nav:['首页','飞机票','火车票']
         }
+    },
+    computed:{
+        ...mapState(['userName'])
     }
 }
 </script>
 <style scoped >
+    h1{
+        float: left;
+    }
     img{
         width:60px;
         height:60px;
     }
     .navBar{
         box-sizing: border-box;
-        padding:10px 0px 0px 15px;
+        padding:10px 15px 0px;
         border-bottom: 1px solid #ccc;
-        display: flex;
+        line-height: 40px;
     }
     ul{
+        float: left;
         list-style: none;
         display:flex;
         align-items: center;
@@ -47,6 +89,35 @@ export default {
     li{
         width:100px;
         text-align: center;
+    }
+    .right{
+        float: right;
+    }
+    .hidden{
+        margin-top: 10px;
+    }
+    @media screen and (max-width:500px) {
+        .hidden{
+            display: none;
+        }
+        .show{
+            display: block;
+        }
+    }
+    @media screen and (min-width:500px) {
+        .show{
+            display: none;
+        }
+    }
+    .show > li{
+        margin-top:10px;
+        text-align: right;
+    }
+    .el-dropdown-menu{
+        display: block;
+    }
+    .el-dropdown{
+        min-width:50px;
     }
 </style>
 

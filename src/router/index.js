@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Login from '@/views/Login/Login'
 import Home from '@/views/Home/Home'
 import Nav from '@/components/Nav'
+import Bottom from '@/components/Bottom'
 Vue.use(Router)
 
 export default new Router({
@@ -17,7 +18,8 @@ export default new Router({
       name: 'Home',
       components:{
         default:Home,
-        nav:Nav
+        nav:Nav,
+        bottom:Bottom
       }
     }
   ]

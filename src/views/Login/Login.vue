@@ -73,6 +73,7 @@
                                     })
                                  }else{
                                      localStorage.setItem('token',res.data.token);
+                                     this.$store.commit('changeUserName',res.data.name)
                                      this.$router.push('/home');
                                  }
                              })
