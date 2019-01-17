@@ -45,5 +45,26 @@ export default {
       /* top:-20px; */
       top:160px;
     }
+    .vcp-panel{
+      width: 280px !important;
+      left: -50px !important;
+    }
 }
+
+.el-carousel__item h3 {
+    color: #475669;
+    font-size: 14px;
+    opacity: 0.75;
+    line-height: 200px;
+    margin: 0;
+  }
+  
+  .el-carousel__item:nth-child(2n) {
+    background-color: orange;
+  }
+  
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #d9d3e6;
+  }
+
 </style>

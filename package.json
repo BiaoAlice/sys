@@ -13,9 +13,12 @@
     "axios": "^0.18.0",
     "china-city-data": "^1.0.1",
     "element-ui": "^2.4.11",
+    "node-sass": "^4.11.0",
+    "sass-loader": "^7.1.0",
     "vue": "^2.5.2",
     "vue-city-picker": "^1.1.1",
     "vue-router": "^3.0.1",
+    "vue2-city-selector": "^0.1.5",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
