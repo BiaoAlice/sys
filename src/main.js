@@ -7,9 +7,13 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios';
 import store from './store/store'
+import myCityPicker from 'vue-city-picker'
+import cityList from 'china-city-data'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)
+Vue.use(myCityPicker)
+Vue.use(cityList)
 Vue.prototype.http = axios
 /* eslint-disable no-new */
 new Vue({

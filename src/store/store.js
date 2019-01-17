@@ -5,7 +5,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
         cityId:'0',
-        userName:''
+        userName:localStorage.getItem('userName')
     },
     mutations:{
         changeCityId(state,value){
