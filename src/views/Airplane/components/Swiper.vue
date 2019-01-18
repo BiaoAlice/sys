@@ -11,8 +11,8 @@
                     :key="i"
                    >
                         <h5 class="h5">{{v.title}}</h5>
-                        <h5>{{v.msg}}&nbsp;&nbsp;&nbsp;<span>{{v.price}}</span></h5>
-                        <h5>{{v.msg1}}&nbsp;&nbsp;&nbsp;<span>{{v.price1}}</span></h5>
+                        <h5>{{v.msg}}&nbsp;&nbsp;&nbsp;<span>¥{{v.price}}</span></h5>
+                        <h5>{{v.msg1}}&nbsp;&nbsp;&nbsp;<span>¥{{v.price1}}</span></h5>
                    </el-col>
                </el-row>
             </el-carousel-item>
@@ -122,4 +122,8 @@ export default {
     .h5{
         color: #589ef8;
     }
+    .el-col{
+        padding-right: 0px !important;
+    }
+  
 </style>

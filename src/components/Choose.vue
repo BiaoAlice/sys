@@ -1,18 +1,18 @@
 <template>
     <div class="choose">
         <div class="container">
-            <h2>机票</h2>
+            <h2>{{this.title}}</h2>
             <p>
                 <label for="city">出发城市</label>
                 <city-selector field="city" placeholder="请选择城市" 
-                :no-hot="true" :city-list="cityListArr" v-model="cityId">
+                :no-hot="true" :city-list="cityListArr" v-model="start">
                 </city-selector>
             </p>
             <div class="taggle"><a href="javascript:;" @click="taggle">换</a></div>
             <p>
                 <label for="city">到达城市</label>
                 <city-selector field="city" placeholder="请选择城市" 
-                :no-hot="true" :city-list="cityListArr" v-model="cityId1">
+                :no-hot="true" :city-list="cityListArr" v-model="end">
                 </city-selector>
             </p>
             <p>
@@ -24,7 +24,7 @@
                 </el-date-picker>
             </p>
             <p>
-                <el-button type="warning" size="medium">搜索</el-button>
+                <el-button type="warning" size="medium" @click="submit">搜索</el-button>
             </p>
         </div>
   </div>
@@ -36,11 +36,15 @@ import cityList from 'china-city-data';
 
 export default {
     name:'choose',
+    props:['title'],
     data () {
         return{
-            cityId: '',
-            cityId1: '',
+            start: '',
+            end: '',
+            startName:'',
+            endName:'',
             cityListArr: cityList,
+            cityListKey:['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','W','X','Y','Z'],
             activeName:'air',
             day:'',
             pickerOptions1: {
@@ -58,9 +62,43 @@ export default {
             let value = this.cityId;
             this.cityId = this.cityId1;
             this.cityId1 = value;
+        },
+        submit(){
+            // console.log(this.cityListArr[0].find(x => {return x.id == this.start}));
+            if(this.start=='' || this.end == '' || this.time == ''){
+                this.$message({
+                        duration: 2000,
+                        showClose: true,
+                        message:'请选择出发城市/到达城市/出发时间',
+                        type:'error'
+                    })
+            }else{
+                this.cityListKey.forEach(item=>{
+                    let name = this.cityListArr[item].find(x => {return x.id == this.start});
+                    if(name){
+                        this.startName = name.name;
+                        return false;
+                    }
+                })
+                this.cityListKey.forEach(item=>{
+                    let name = this.cityListArr[item].find(x => {return x.id == this.end});
+                    if(name){
+                        this.endName = name.name;
+                        return false;
+                    }
+                })
+                this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
+                    .then(res=>{
+                        console.log(res);
+                    })
+            }
         }
+    },
+    created(){
+        // 275a8c8708ce0
+        // http://apicloud.mob.com/flight/line/query?key=appkey&start=上海&end=海口
+        
     }
-
 }
 </script>
 

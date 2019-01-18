@@ -31,6 +31,13 @@ module.exports = {
           '^/jdList': ''
         }
       },
+      '/ticket': {
+        target: 'http://apicloud.mob.com',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/ticket': ''
+        }
+      }
     },
 
     // Various Dev Server settings
