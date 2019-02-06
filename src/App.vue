@@ -66,5 +66,8 @@ export default {
   .el-carousel__item:nth-child(2n+1) {
     background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
   }
-
+  
+  .el-table thead{
+    color: black;
+  }
 </style>

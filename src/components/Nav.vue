@@ -11,12 +11,14 @@
                     </li>
                 </ul>
                 <ul class="hidden">
-                    <li
+                    <router-link
                         v-for="(item,index) in nav"
                         :key="index"
+                        :to="item.link"
+                        tag="li"
                     >
-                    {{item}}
-                    </li>
+                    {{item.name}}
+                    </router-link>
                 </ul>
                 <ul class="right hidden">
                     <li>
@@ -58,7 +60,20 @@ export default {
     name:'Nav',
     data () {
         return{
-            nav:['首页','飞机票','火车票']
+            nav:[
+                {
+                    name:'首页',
+                    link:'/home'
+                },
+                {
+                    name:'飞机票',
+                    link:'/airplane'
+                },
+                {
+                    name:'火车票',
+                    link:'/train'
+                },
+            ]
         }
     },
     computed:{
@@ -67,6 +82,9 @@ export default {
 }
 </script>
 <style scoped >
+    .router-link-active{
+        color: red;
+    }
     h1{
         float: left;
     }
@@ -118,6 +136,9 @@ export default {
     }
     .el-dropdown{
         min-width:50px;
+    }
+    li{
+        cursor: pointer;
     }
 </style>
 

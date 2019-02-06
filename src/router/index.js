@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Login from '@/views/Login/Login'
 import Home from '@/views/Home/Home'
 import Airplane from '@/views/Airplane/Airplane'
+import Train from '@/views/Train/Train'
+import Search from '@/views/Search/Search'
 import Nav from '@/components/Nav'
 import Bottom from '@/components/Bottom'
 Vue.use(Router)
@@ -29,8 +31,24 @@ export default new Router({
         default:Airplane,
         nav:Nav,
         bottom:Bottom
-    }
-  }
+      }
+    },{
+      path: '/train',
+      name: 'Train',
+      components:{
+        default:Train,
+        nav:Nav,
+        bottom:Bottom
+      }
+    },{
+        path:'/search',
+        name:'Search',
+        components:{
+          default:Search,
+          nav:Nav,
+          bottom:Bottom
+        }
+      }
   ]
 })
 

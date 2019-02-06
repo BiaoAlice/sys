@@ -45,7 +45,6 @@ export default {
             endName:'',
             cityListArr: cityList,
             cityListKey:['A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','W','X','Y','Z'],
-            activeName:'air',
             day:'',
             pickerOptions1: {
                 disabledDate(time) {
@@ -59,13 +58,13 @@ export default {
     },
     methods:{
         taggle(){
-            let value = this.cityId;
-            this.cityId = this.cityId1;
-            this.cityId1 = value;
+            let value = this.start;
+            this.start = this.end;
+            this.end = value;
         },
         submit(){
             // console.log(this.cityListArr[0].find(x => {return x.id == this.start}));
-            if(this.start=='' || this.end == '' || this.time == ''){
+            if(this.start=='' || this.end == '' || this.day == ''){
                 this.$message({
                         duration: 2000,
                         showClose: true,
@@ -73,6 +72,32 @@ export default {
                         type:'error'
                     })
             }else{
+                if(this.start == this.end){
+                    this.$message({
+                        duration: 2000,
+                        showClose: true,
+                        message:'请选择正确的出发城市/到达城市',
+                        type:'error'
+                    });
+                    return false;
+                }
+                //时间格式化
+                Date.prototype.Format = function (fmt) { 
+                    var o = {
+                        "M+": this.getMonth() + 1, //月份 
+                        "d+": this.getDate(), //日 
+                        "h+": this.getHours(), //小时 
+                        "m+": this.getMinutes(), //分 
+                        "s+": this.getSeconds(), //秒 
+                        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+                        "S": this.getMilliseconds() //毫秒 
+                    };
+                    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                    for (var k in o)
+                    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                    return fmt;
+                }
+                var time1 = this.day.Format("yyyy-MM-dd");
                 this.cityListKey.forEach(item=>{
                     let name = this.cityListArr[item].find(x => {return x.id == this.start});
                     if(name){
@@ -87,10 +112,35 @@ export default {
                         return false;
                     }
                 })
-                this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
-                    .then(res=>{
-                        console.log(res);
-                    })
+                if(this.title == "机票"){
+                    // this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
+                    //     .then(res=>{
+                    //         console.log(res);
+                    //     })
+                    this.$router.push({
+                            path:'search',
+                            query:{
+                                type:'air',
+                                start:this.startName,
+                                end:this.endName,
+                                time:time1
+                            }
+                        })
+                }else{
+                    // this.http.get(`/ticket/train/tickets/queryByStationToStation?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
+                    //     .then(res=>{
+                    //         console.log(res);
+                    //     })
+                     this.$router.push({
+                            path:'search',
+                            query:{
+                                type:'train',
+                                start:this.startName,
+                                end:this.endName,
+                                time:time1
+                            }
+                        })
+                }
             }
         }
     },
