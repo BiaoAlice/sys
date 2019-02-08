@@ -50,6 +50,20 @@ export default {
       left: -50px !important;
     }
 }
+@media screen and (min-width: 501px) {
+    .demo-table-expand {
+    font-size: 0;
+  }
+  .demo-table-expand label {
+    width: 90px;
+    color: #99a9bf;
+  }
+  .demo-table-expand .el-form-item {
+    margin-right: 0;
+    margin-bottom: 0;
+    width: 50%;
+  }
+}
 
 .el-carousel__item h3 {
     color: #475669;
@@ -70,4 +84,6 @@ export default {
   .el-table thead{
     color: black;
   }
+
+ 
 </style>

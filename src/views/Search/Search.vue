@@ -7,7 +7,7 @@
                 :xs="24"
                 class="bottom"
             >
-            <h3>{{this.start}} ---- {{this.end}}&nbsp;&nbsp;&nbsp;<span>单程</span></h3>
+            <h3>{{this.start}} ---- {{this.end}}&nbsp;&nbsp;&nbsp;<span>单程</span>&nbsp;<span>{{this.type == 'air' ? '飞机票' : '火车票'}}</span></h3>
             </el-col>
              <el-col
                 :md="8"
@@ -31,12 +31,14 @@
                 <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
             </el-col>
         </el-row>
-        <list :trainList = "trainList"></list>
+        <list :trainList = "trainList" v-if="this.type == 'train'"></list>
+        <air :airList = "airList" v-if="this.type == 'air'"></air>
     </div>
 </template>
 
 <script>
 import list from './components/list'
+import air from './components/air'
 export default {
     name:'Search',
     data () {
@@ -46,6 +48,7 @@ export default {
             end:'',
             day:'',
             trainList:[],
+            airList:[],
             pickerOptions1: {
                 disabledDate(time) {
                     return time.getTime() < Date.now();
@@ -62,7 +65,11 @@ export default {
         if(this.type == 'air'){
             this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.start}&end=${this.end}`)
                         .then(res=>{
-                            console.log(res);
+                            if(res.data.result<6){
+                                this.airList = res.data.result;
+                            }else{
+                                this.airList = res.data.result.splice(0,6);
+                            }
                         })
         }else{
              this.http.get(`/ticket/train/tickets/queryByStationToStation?key=275a8c8708ce0&start=${this.start}&end=${this.end}`)
@@ -72,7 +79,6 @@ export default {
                             }else{
                                 this.trainList = res.data.result.splice(0,8);
                             }
-                            console.log(this.trainList);
                         })
         }
     },
@@ -89,10 +95,15 @@ export default {
             }
             // console.log('搜索成功');
             if(this.type == 'air'){
+                let num = Math.round(Math.random()*5+1);
             this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.start}&end=${this.end}`)
                         .then(res=>{
-                            console.log(res);
-                            })
+                              if(res.data.result.length<num){
+                                    this.airList = res.data.result;
+                            }else{
+                                this.airList = res.data.result.splice(0,num);
+                            }
+                        })
             }else{
                 let num = Math.round(Math.random()*7+1);
                 this.http.get(`/ticket/train/tickets/queryByStationToStation?key=275a8c8708ce0&start=${this.start}&end=${this.end}`)
@@ -102,13 +113,13 @@ export default {
                             }else{
                                 this.trainList = res.data.result.splice(0,num);
                             }
-                            // console.log(this.trainList);
                         })
         }
         }
     },
     components:{
-        list
+        list,
+        air
     }
 }
 </script>
