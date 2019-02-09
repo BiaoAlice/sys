@@ -43,7 +43,7 @@
                         <el-button
                         size="mini"
                         type="success"
-                        @click="handleEdit(scope.$index, scope.row)">购票</el-button>
+                        @click="handleEdit(scope.row)">购票</el-button>
                     </template>
                 </el-table-column>
                 </el-table>
@@ -55,15 +55,22 @@
 <script>
 export default {
     name:'list',
-    props:['trainList'],
+    props:['trainList','day1'],
     data () {
         return {
              
         }
     },
     methods:{
-      handleEdit(index, row) {
-        console.log(index, row);
+      handleEdit(row) {
+           this.$router.push({
+                            path:'order',
+                            query:{
+                                type:'train',
+                                msg:row,
+                                day1:this.day1
+                            }
+                        })
       },  
     },
     computed:{

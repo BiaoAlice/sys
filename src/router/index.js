@@ -5,6 +5,7 @@ import Home from '@/views/Home/Home'
 import Airplane from '@/views/Airplane/Airplane'
 import Train from '@/views/Train/Train'
 import Search from '@/views/Search/Search'
+import Order from '@/views/Order/Order'
 import Nav from '@/components/Nav'
 import Bottom from '@/components/Bottom'
 Vue.use(Router)
@@ -48,7 +49,15 @@ export default new Router({
           nav:Nav,
           bottom:Bottom
         }
+    },{
+      path:'/order',
+      name:'Order',
+      components:{
+        default:Order,
+        nav:Nav,
+        bottom:Bottom
       }
+    }
   ]
 })
 

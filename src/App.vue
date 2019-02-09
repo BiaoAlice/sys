@@ -85,5 +85,8 @@ export default {
     color: black;
   }
 
+  .red .el-breadcrumb__inner{
+        color: red !important;
+    }
  
 </style>

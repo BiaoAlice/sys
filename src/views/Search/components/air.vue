@@ -27,7 +27,7 @@
                         </el-form-item>
                         <el-form-item label="票价：">
                             <span class="red">¥{{props.row.price}}</span>
-                            <el-button type="text" @click="handleEdit(props.row.flightNo)">购票</el-button>
+                            <el-button type="text" @click="handleEdit(props.row)">购票</el-button>
                         </el-form-item>
                         </el-form>
                     </template>
@@ -53,15 +53,22 @@
 <script>
 export default {
     name:'list',
-    props:['airList'],
+    props:['airList','day1'],
     data () {
         return {
            
         }
     },
     methods:{
-      handleEdit(flightNo) {
-        console.log(flightNo);
+      handleEdit(msg) {
+        this.$router.push({
+                            path:'order',
+                            query:{
+                                type:'air',
+                                msg,
+                                day1:this.day1
+                            }
+                        })
       },  
     },
     computed:{

@@ -31,8 +31,8 @@
                 <el-button type="primary" icon="el-icon-search" @click="search">搜索</el-button>
             </el-col>
         </el-row>
-        <list :trainList = "trainList" v-if="this.type == 'train'"></list>
-        <air :airList = "airList" v-if="this.type == 'air'"></air>
+        <list :trainList = "trainList" :day1 = "day1" v-if="this.type == 'train'"></list>
+        <air :airList = "airList"  :day1 = "day1" v-if="this.type == 'air'"></air>
     </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
             start:'',
             end:'',
             day:'',
+            day1:'',
             trainList:[],
             airList:[],
             pickerOptions1: {
@@ -56,6 +57,28 @@ export default {
             }
             
         }
+    },
+    updated(){
+        if(isNaN(this.day)&&!isNaN(Date.parse(this.day))){
+            this.day1 = this.day;
+            }else{
+                  Date.prototype.Format = function (fmt) { 
+                    var o = {
+                        "M+": this.getMonth() + 1, //月份 
+                        "d+": this.getDate(), //日 
+                        "h+": this.getHours(), //小时 
+                        "m+": this.getMinutes(), //分 
+                        "s+": this.getSeconds(), //秒 
+                        "q+": Math.floor((this.getMonth() + 3) / 3), //季度 
+                        "S": this.getMilliseconds() //毫秒 
+                    };
+                    if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+                    for (var k in o)
+                    if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+                    return fmt;
+                }
+                  this.day1 = this.day.Format("yyyy-MM-dd");
+            }
     },
     created(){
         this.type = this.$route.query.type;

@@ -113,10 +113,6 @@ export default {
                     }
                 })
                 if(this.title == "机票"){
-                    // this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
-                    //     .then(res=>{
-                    //         console.log(res);
-                    //     })
                     this.$router.push({
                             path:'search',
                             query:{
@@ -127,10 +123,6 @@ export default {
                             }
                         })
                 }else{
-                    // this.http.get(`/ticket/train/tickets/queryByStationToStation?key=275a8c8708ce0&start=${this.startName}&end=${this.endName}`)
-                    //     .then(res=>{
-                    //         console.log(res);
-                    //     })
                      this.$router.push({
                             path:'search',
                             query:{
@@ -143,12 +135,7 @@ export default {
                 }
             }
         }
-    },
-    created(){
-        // 275a8c8708ce0
-        // http://apicloud.mob.com/flight/line/query?key=appkey&start=上海&end=海口
-        
-    }
+    } 
 }
 </script>
 
