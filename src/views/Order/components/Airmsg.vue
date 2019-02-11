@@ -1,12 +1,18 @@
 <template>
     <div class="airmsg">
-        <div class="msg">
+        <div class="msg" v-if="this.type == 'air'">
             <p>{{day1}} \ {{this.msg.fromCityName}}------{{this.msg.toCityName}} \ 经济舱</p>
             <p>{{this.msg.airLines}}</p>
             <h3>{{this.msg.planTime}} ------ {{this.msg.planArriveTime}} </h3>
             <p class="left">票务说明</p>
         </div>
-        <div class="content">
+        <div class="msg" v-else>
+            <p>{{day1}} \ {{this.msg.startStationName}}------{{this.msg.endStationName}} \ 硬座</p>
+            <p>{{this.msg.stationTrainCode}}</p>
+            <h3>{{this.msg.startTime}} ------ {{this.msg.arriveTime}} </h3>
+            <p class="left">票务说明</p>
+        </div>
+        <div class="content" v-if="this.type == 'air'">
             {{content}}
         </div>
         <el-card class="box-card" shadow="never">
@@ -31,7 +37,7 @@ export default {
             list:[
                 {
                     name:'成人票',
-                    price:this.msg.price
+                    price:this.msg.price 
                 },
                 {
                     name:'机建燃油',
@@ -50,11 +56,16 @@ export default {
         sPrice(){
             let price = 0;
             this.list.forEach(item=>{
-                price += parseInt(item.price);
+                price += parseFloat(item.price);
             })
             return price;
         },
         listPrice(){
+            if(this.type != 'air'){
+                let priceyz = this.msg.priceyz;
+                priceyz = priceyz.substring(1);
+                this.list[0].price = priceyz;
+            }
             this.list[2].price = this.price;
             let arr = this.list.filter(item=>{
                 return item.price != 0;

@@ -65,6 +65,9 @@ export default {
         this.type = this.$route.query.type;
         this.msg = this.$route.query.msg;
         this.day1 = this.$route.query.day1
+    },
+    destroyed(){
+        this.$store.commit('changePrice',0);
     }
 }
 </script>

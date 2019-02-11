@@ -12,7 +12,7 @@ export default new Vuex.Store({
         changeCityId(state,value){
             state.cityId =value
         },
-        changeUserName(state,value){
+        changeUserName(state,value){ 
             state.userName =value
         },
         changePrice(state,value){

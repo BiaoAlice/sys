@@ -7,14 +7,14 @@
                 <el-input v-model="formLabelAlign.name" disabled></el-input>
             </el-form-item>
             <el-form-item label="学号">
-                <el-input v-model="formLabelAlign.number" disabled></el-input>
+                <el-input v-model="formLabelAlign.id" disabled></el-input>
             </el-form-item>
             <el-form-item label="手机号码">
-                <el-input v-model="formLabelAlign.tell" placeholder="（选填）用于接收航班信息"></el-input>
+                <el-input v-model="formLabelAlign.tell" placeholder="（选填）用于接收班次信息"></el-input>
             </el-form-item>
         </el-form>
         <p></p>
-        <el-form label-position="left" label-width="90px"  v-if="type == 'air'">
+        <el-form label-position="left" label-width="90px" >
             <el-form-item label="意外险">
                 <el-select v-model="value1" placeholder="请选择" >
                     <el-option
@@ -51,8 +51,8 @@ export default {
         return {
             formLabelAlign: {
                 name: '',
-                region: '',
-                type: '',
+                id: '',
+                tell: '',
             },
             val1:0,
             val2:0,
@@ -85,6 +85,21 @@ export default {
        change1(val){
           this.val2 = val;
        }
+    },
+    created(){
+        this.http.get('/api/user/getmsg',{
+            params:{
+                token: localStorage.getItem('token')
+            }
+        })
+        .then(res=>{
+            if(res.code == 0){
+                this.$router.path('/');
+            }else{
+                this.formLabelAlign.name = res.data.msg.studentName;
+                this.formLabelAlign.id = res.data.msg.studentId;
+            }
+        })
     },
     updated(){
         let val = this.val1 + this.val2;
