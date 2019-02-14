@@ -30,11 +30,6 @@ export default {
  .el-form-item__label{
         text-align: center;
     }
-  @media screen and (max-width:500px){
-    .el-carousel__container{
-        height: 80px;
-    }
-}
 .el-tabs__header{
   padding-left: 12px;
 }
@@ -43,6 +38,9 @@ export default {
   padding-right: 10px;
 }
 @media screen and (max-width:500px){
+  .el-carousel__container{
+        height: 80px;
+    }
     .el-loading-spinner{
       position: relative;
       /* top:-20px; */
@@ -91,5 +89,9 @@ export default {
   .red .el-breadcrumb__inner{
         color: red !important;
     }
+  
+  .center .el-form-item__content{
+    margin-left: 0 !important;
+  }
  
 </style>

@@ -126,6 +126,12 @@ export default {
                             }else{
                                 this.airList = res.data.result.splice(0,num);
                             }
+                            this.$message({
+                                duration: 2000,
+                                showClose: true,
+                                message:'更新完成',
+                                type:'success'
+                            });
                         })
             }else{
                 let num = Math.round(Math.random()*7+1);
@@ -136,6 +142,12 @@ export default {
                             }else{
                                 this.trainList = res.data.result.splice(0,num);
                             }
+                            this.$message({
+                                duration: 2000,
+                                showClose: true,
+                                message:'更新完成',
+                                type:'success'
+                            });
                         })
         }
         }
