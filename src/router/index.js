@@ -5,6 +5,7 @@ import Home from '@/views/Home/Home'
 import Airplane from '@/views/Airplane/Airplane'
 import Train from '@/views/Train/Train'
 import Search from '@/views/Search/Search'
+import Mine from '@/views/Mine/Mine'
 import Order from '@/views/Order/Order'
 import Nav from '@/components/Nav'
 import Bottom from '@/components/Bottom'
@@ -56,6 +57,13 @@ export default new Router({
         default:Order,
         nav:Nav,
         bottom:Bottom
+      }
+    },{
+      path:'/mine',
+      name:'Mine',
+      components:{
+        default:Mine,
+        nav:Nav
       }
     }
   ]
