@@ -74,8 +74,16 @@
                                  }else{
                                      localStorage.setItem('token',res.data.token);
                                      localStorage.setItem('userName',res.data.name);
+                                     localStorage.setItem('studentId',res.data.studentId);
+                                     localStorage.setItem('payPsd',res.data.studentPayPsd);
                                      let userName = localStorage.getItem('userName');
+                                     let studentId = localStorage.getItem('studentId');
+                                     let payPsd = localStorage.getItem('payPsd');
+                                     let balance = localStorage.getItem('balance');
                                      this.$store.commit('changeUserName',userName)
+                                     this.$store.commit('changeStudentId',studentId);
+                                     this.$store.commit('changeStudentPayPsd',payPsd);
+                                     this.$store.commit('changebalance',balance);
                                      this.$router.push('/home');
                                  }
                              })

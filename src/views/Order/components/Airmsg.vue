@@ -40,7 +40,7 @@ export default {
                     price:this.msg.price 
                 },
                 {
-                    name:'机建燃油',
+                    name:'燃油费',
                     price:50
                 },
                 {
@@ -65,6 +65,7 @@ export default {
                 let priceyz = this.msg.priceyz;
                 priceyz = priceyz.substring(1);
                 this.list[0].price = priceyz;
+                this.list[1].price = 3;
             }
             this.list[2].price = this.price;
             let arr = this.list.filter(item=>{
@@ -74,9 +75,34 @@ export default {
         }
     },
     created(){
-
+        if(this.type == 'air'){
+            this.$store.commit("changeOrderMsg", orderMsg(this.sPrice,this.msg.fromCityName,this.msg.toCityName,this.msg.planTime,this.msg.planArriveTime,this.day1,this.msg.airLines))
+        }else{
+            this.$store.commit("changeOrderMsg", orderMsg(this.sPrice,this.msg.startStationName,this.msg.endStationName,this.msg.startTime,this.msg.arriveTime,this.day1,this.msg.stationTrainCode))
+        }
+    },
+    updated(){
+        if(this.type == 'air'){
+            this.$store.commit("changeOrderMsg", orderMsg(this.sPrice,this.msg.fromCityName,this.msg.toCityName,this.msg.planTime,this.msg.planArriveTime,this.day1,this.msg.airLines))
+        }else{
+            this.$store.commit("changeOrderMsg", orderMsg(this.sPrice,this.msg.startStationName,this.msg.endStationName,this.msg.startTime,this.msg.arriveTime,this.day1,this.msg.stationTrainCode))
+        }
     }
 }
+
+function orderMsg(price,start,end,startTime,endTime,time,code){
+    let orderMsg={
+                price,
+                start,
+                end,
+                startTime,
+                endTime,
+                time,
+                code,
+            }
+    return orderMsg;
+    }
+
 </script>
 
 <style scoped>

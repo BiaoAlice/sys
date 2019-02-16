@@ -27,7 +27,7 @@
                             {{userName}}<i class="el-icon-arrow-down el-icon--right"></i>
                         </span>
                         <el-dropdown-menu slot="dropdown">
-                            <el-dropdown-item>个人中心</el-dropdown-item>
+                            <el-dropdown-item><router-link to="/mine">个人中心</router-link></el-dropdown-item>
                             <el-dropdown-item divided>注销</el-dropdown-item>
                         </el-dropdown-menu>
                         </el-dropdown>
@@ -139,6 +139,9 @@ export default {
     }
     li{
         cursor: pointer;
+    }
+    a{
+        text-decoration: none;
     }
 </style>
 

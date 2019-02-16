@@ -25,7 +25,7 @@
                 :lg="16"
                 :xs="24"
             >
-                <linkman></linkman>
+                <linkman :type="type"></linkman>
             </el-col>
         </el-row>
     </div>
@@ -36,7 +36,6 @@ import tab from './components/Tab'
 import passenger from './components/Passenger'
 import linkman from './components/Linkman'
 import airmsg from './components/Airmsg'
-
 export default {
     name:'Order',
     data () {

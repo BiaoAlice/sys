@@ -93,5 +93,11 @@ export default {
   .center .el-form-item__content{
     margin-left: 0 !important;
   }
+
+    .el-table_1_column_1  .cell{
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis; 
+    }
  
 </style>

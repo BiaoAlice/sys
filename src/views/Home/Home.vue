@@ -60,12 +60,6 @@ export default {
         ...mapState(["cityId"])
     },
     created(){
-        // console.log(this.cityId);
-        // console.log(this.$store.state.cityId)
-        // this.http.get('/train/train/tickets/queryByStationToStation?key=275a8c8708ce0&start=乌海&end=北京')
-        //          .then(res=>{
-        //             console.log(res);
-        //          })
         this.http.get('/api/jdlist/getlist')
                 .then(res=>{
                     this.cityList = res.data.data;
@@ -74,6 +68,14 @@ export default {
 }
 </script>
 <style scoped>
+.home{
+        padding:10px 123px;
+    }
+    @media screen and (max-width:500px) {
+        .home{
+            padding:10px 0;
+        }
+   }
     .title{
         padding-left: 10px;
         color:#589ef8;

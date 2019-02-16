@@ -3,14 +3,44 @@
         <div class="msg">
             <div class="toux"></div>
             <h2 class="h2">{{form.name}}</h2>
-            <p class="p">余额：{{balance}}</p>
+            <p class="p">余额：{{balance}}元</p>
         </div>
         <el-tabs type="border-card">
             <el-tab-pane label="订单中心">
                 <div class="order">
-                    <div class="absolute">
+                    <div class="absolute" v-if="show">
                         <i class="img"></i>
                         <span>暂时没有相关订单</span>
+                    </div>
+                    <div v-if="!show">
+                       <el-table
+                            :data="orderList"
+                            stripe
+                            style="width: 100%">
+                            <el-table-column
+                            prop="orderId"
+                            label="订单号"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                            prop="type"
+                            label="类型"
+                            >
+                            </el-table-column>
+                            <el-table-column
+                            prop="msg.time"
+                            sortable
+                            label="出发时间">
+                            </el-table-column>
+                            <el-table-column
+                            prop="msg.start"
+                            label="出发城市">
+                            </el-table-column>
+                            <el-table-column
+                            prop="msg.end"
+                            label="到达城市">
+                            </el-table-column>
+                        </el-table>
                     </div>
                 </div>
             </el-tab-pane>
@@ -29,7 +59,7 @@
                         <el-input v-model="form.payPsd" placeholder="输入新密码（默认为旧密码）" type="password"></el-input>
                     </el-form-item>
                     <el-form-item class="center">
-                        <el-button type="warning" @click="submit">确认修改</el-button>
+                        <el-button type="warning" @click="change">确认修改</el-button>
                     </el-form-item>
                 </el-form>
             </el-tab-pane>
@@ -75,7 +105,10 @@ export default {
             },
             radio2: null,
             payPsd:'',
-            balance:null
+            logPsd:'',
+            balance:null,
+            show:true,
+            orderList:[]
         }
     },
     methods:{
@@ -99,6 +132,7 @@ export default {
                         this.price.name = res.data.msg.studentName;
                         this.payPsd = res.data.msg.studentPayPsd;
                         this.balance = res.data.msg.balance;
+                        this.$store.commit('changebalance',res.data.msg.balance);
                         this.radio2 = null;
                         this.price.payPsd="";
                     })
@@ -106,7 +140,42 @@ export default {
                         console.log(err);
                     })
             }else{
-                alert("密码错误！")
+               this.$message({
+                                duration: 2000,
+                                showClose: true,
+                                message:'请填写正确的密码',
+                                type:'error'
+                            });
+            }
+        },
+        change(){
+            if(this.logPsd == '' && this.payPsd == ''){
+                this.$message({
+                    duration: 2000,
+                    showClose: true,
+                    message:'请填写登录密码/支付密码',
+                    type:'error'
+                });
+            }else{
+                this.http.post('/api/user/updatepsd',{
+                        token:localStorage.getItem("token"),
+                        studentPsd: this.form.logPsd,
+                        payPsd: this.form.payPsd
+                }).then(res=>{
+                    if(res.code == 0){
+                        this.$router.path('/');
+                    }else{
+                        this.$message({
+                            duration: 2000,
+                            showClose: true,
+                            message:'修改成功',
+                            type:'success'
+                        });
+                        this.$store.commit("changeStudentPayPsd",this.form.payPsd);
+                        this.form.logPsd="";
+                        this.form.payPsd= "";
+                    }
+                })
             }
         }
     },
@@ -120,15 +189,35 @@ export default {
             if(res.code == 0){
                 this.$router.path('/');
             }else{
-                console.log(res);
                 this.form.name = res.data.msg.studentName;
                 this.form.id = res.data.msg.studentId;
                 this.price.name = res.data.msg.studentName;
                 this.payPsd = res.data.msg.studentPayPsd;
                 this.balance = res.data.msg.balance;
-                console.log(this.payPsd);
+                this.logPsd = res.data.msg.studentPsd;
+                this.$store.commit('changebalance',res.data.msg.balance);
+
             }
         })
+        // 订单请求
+         this.http.get('/api/order/get',{
+            params:{
+                token: localStorage.getItem('token')
+            }
+        }).then(res=>{
+            console.log(res)
+                if(res.data.data != ''){
+                    this.show=false;
+                   this.orderList = res.data.data;
+                   this.orderList.forEach(item=>{
+                       if(item.type == 'air'){
+                          return item.type = '飞机票'
+                       }else{
+                           return item.type ="火车票"
+                       }
+                   })
+                }
+            })
     }
 }
 </script>
@@ -208,4 +297,5 @@ export default {
     .el-radio{
         width:70px;
     }
+  
 </style>
