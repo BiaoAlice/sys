@@ -1,15 +1,11 @@
 <template>
     <div class="card">
         <el-row :gutter="20">
-            <el-col :lg="6" :xs="12" :md="6" v-for="(o, index) in 4" :key="index">
+            <el-col :lg="6" :xs="12" :md="6" v-for="(item,index) in list" :key="index">
                 <el-card shadow="hover">
-                <img src="@/assets/train/card1.jpg" class="image">
+                <img :src="item.url" class="image">
                 <div style="padding: 14px;">
-                    <span>好吃的汉堡</span>
-                    <div class="bottom clearfix">
-                    <!-- <time class="time">{{ currentDate }}</time> -->
-                    <el-button type="text" class="button">操作按钮</el-button>
-                    </div>
+                    <span>{{item.title}}</span>
                 </div>
                 </el-card>
             </el-col>
@@ -19,7 +15,29 @@
 
 <script>
 export default {
-    name:'Card'
+    name:'Card',
+    data (){
+        return{
+            list:[
+                {
+                    url:'@/../static/trainlist1.jpg',
+                    title:"‘环西部火车游’精品旅游路线"
+                },
+                {
+                    url:'@/../static/trainlist2.jpg',
+                    title:"‘环西部火车游’甘南3日游"
+                },
+                {
+                    url:'@/../static/trainlist3.jpg',
+                    title:"‘西部火车游’西海湖2日游"
+                },
+                {
+                    url:'@/../static/trainlist4.jpg',
+                    title:"‘西部火车游‘嘉敦5日游"
+                }
+            ]
+        }
+    }
 }
 </script>
 

@@ -32,20 +32,20 @@ export default {
                     price3:306
                 },
                 {
-                    start1:"北京 --- 沈阳",
-                    price1:206,
-                    start2:"北京 --- 青岛",
+                    start1:"上海 --- 北京",
+                    price1:309,
+                    start2:"上海 --- 武汉",
                     price2:249,
-                    start3:"北京 --- 长春",
-                    price3:306
+                    start3:"上海 --- 杭州",
+                    price3:146
                 },
                 {
-                    start1:"北京 --- 沈阳",
-                    price1:206,
-                    start2:"北京 --- 青岛",
-                    price2:249,
-                    start3:"北京 --- 长春",
-                    price3:306
+                    start1:"杭州 --- 宁波",
+                    price1:149,
+                    start2:"杭州 --- 南昌",
+                    price2:190,
+                    start3:"杭州 --- 温岭",
+                    price3:100
                 }
             ]
         }

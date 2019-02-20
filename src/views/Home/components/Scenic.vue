@@ -13,8 +13,9 @@
                 :sm="8"
                 :xs="12"
                 class="item"
+                @click.native="to(item.url)"
             >
-                 <el-card :body-style="{ padding: '0px' }" shadow="hover">
+                 <el-card :body-style="{ padding: '0px' }" shadow="hover" >
                     <img :src="item.imgurl" class="image">
                     <div style="padding: 14px;" class="container">
                         <span class="title">{{item.title}}</span>
@@ -37,48 +38,54 @@ export default {
     data () {
         return{
             loading:true,
-            // list:[]
-            list:[{
-        address: "北京市丰台区王佐镇青龙湖公园",
-        cityId: "",
-        comm_cnt: null,
-        grade: "AAA",
-        imgurl: "http://pic5.40017.cn/01/000/8f/2a/rBANC1lCWzmAXuNTAAQAAEtkR4s881_240x135_00.jpg",
-        price_min: "29",
-        sid: "18241",
-        title: "青龙湖公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_18241.html",
-    },  {
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    },{
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "AAA",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    },{
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    }]
+            list:[]
+    //         list:[{
+    //     address: "北京市丰台区王佐镇青龙湖公园",
+    //     cityId: "",
+    //     comm_cnt: null,
+    //     grade: "AAA",
+    //     imgurl: "http://pic5.40017.cn/01/000/8f/2a/rBANC1lCWzmAXuNTAAQAAEtkR4s881_240x135_00.jpg",
+    //     price_min: "29",
+    //     sid: "18241",
+    //     title: "青龙湖公园",
+    //     url: "http://www.ly.com/scenery/BookSceneryTicket_18241.html",
+    // },  {
+    //     address: "北京市房山区韩村河镇",
+    //     cityId: "",
+    //     comm_cnt: null,
+    //     grade: "",
+    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
+    //     price_min: "0",
+    //     sid: "20655",
+    //     title: "北京上方山国家森林公园",
+    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+    // },{
+    //     address: "北京市房山区韩村河镇",
+    //     cityId: "",
+    //     comm_cnt: null,
+    //     grade: "AAA",
+    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
+    //     price_min: "0",
+    //     sid: "20655",
+    //     title: "北京上方山国家森林公园",
+    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+    // },{
+    //     address: "北京市房山区韩村河镇",
+    //     cityId: "",
+    //     comm_cnt: null,
+    //     grade: "",
+    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
+    //     price_min: "0",
+    //     sid: "20655",
+    //     title: "北京上方山国家森林公园",
+    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+    // }]
+        }
+    },
+    methods:{
+        to(url){
+            console.log(url);
+            window.open(url);
         }
     },
     computed:{
@@ -90,18 +97,16 @@ export default {
        },2000)
     },
     created(){
-        // console.log(this.cityId);
         //http://apis.haoservice.com/lifeservice/travel/cityList?key=您申请的APPKEY
-           // let cityId = this.cityId ? 0 : this.cityId;
-            // console.log(this.cityId);
-        //   this.http.get(`/jdList/lifeservice/travel/scenery?page=1&cid=${this.cityId}&key=f33fcef5c3574e53908d5c3620fd6d39`)
+           let cityId = this.cityId ? 0 : this.cityId;
+            console.log(this.cityId);
+          this.http.get(`/jdList/lifeservice/travel/scenery?page=1&cid=${this.cityId}&key=f33fcef5c3574e53908d5c3620fd6d39`)
         //   this.http.get(`/jdList/lifeservice/travel/cityList?key=f33fcef5c3574e53908d5c3620fd6d39`)
-                //  .then(res=>{
-                //      console.log(res);
-                //         this.list = res.data.result.splice(0,8);
-                //         this.loading = false;
-                //  })
-                // console.log(this.loading);
+                 .then(res=>{
+                     console.log(res);
+                        this.list = res.data.result.splice(0,8);
+                        this.loading = false;
+                 })
                 
                 
     }

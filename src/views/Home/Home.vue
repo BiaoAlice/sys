@@ -15,17 +15,7 @@
         <img src="../../assets/home/hotel1.jpg" alt="">
         <img src="../../assets/home/hotel.jpg" alt="">
         <h3 class="title hotel">超值酒店</h3>
-        <el-tabs tab-position="left">
-            <el-tab-pane
-                v-for="item in cityList"
-                :key="item.name"
-                :label="item.label"
-                :name="item.name"
-            >
-                <!-- <hotel v-if=" item.name == cityId"></hotel> -->
-                <hotel></hotel>
-            </el-tab-pane>
-        </el-tabs>
+        <hotel></hotel>
         <friendly-link></friendly-link>
     </div>
 </template>

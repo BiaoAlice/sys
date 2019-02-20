@@ -28,7 +28,7 @@
                         </span>
                         <el-dropdown-menu slot="dropdown">
                             <el-dropdown-item><router-link to="/mine">个人中心</router-link></el-dropdown-item>
-                            <el-dropdown-item divided>注销</el-dropdown-item>
+                            <el-dropdown-item divided @click.native="exit">注销</el-dropdown-item>
                         </el-dropdown-menu>
                         </el-dropdown>
                     </li>
@@ -40,11 +40,11 @@
                                 <i class="el-icon-caret-bottom el-icon--right"></i>
                         
                             <el-dropdown-menu slot="dropdown">
-                                <el-dropdown-item>首页</el-dropdown-item>
-                                <el-dropdown-item>飞机票</el-dropdown-item>
-                                <el-dropdown-item>火车票</el-dropdown-item>
-                                <el-dropdown-item>个人中心</el-dropdown-item>
-                                <el-dropdown-item divided>注销</el-dropdown-item>
+                                <el-dropdown-item v-for="(item,index) in nav" :key="index">
+                                    <router-link :to="item.link">{{item.name}}</router-link>
+                                </el-dropdown-item>
+                                <el-dropdown-item><router-link to="/mine">个人中心</router-link></el-dropdown-item>
+                                <el-dropdown-item divided @click.native="exit">注销</el-dropdown-item>
                             </el-dropdown-menu>
                         </el-dropdown>
                     </li>
@@ -74,6 +74,12 @@ export default {
                     link:'/train'
                 },
             ]
+        }
+    },
+    methods:{
+        exit(){
+            localStorage.removeItem('userName');
+            this.$router.push('/');
         }
     },
     computed:{

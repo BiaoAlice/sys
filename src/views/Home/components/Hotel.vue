@@ -6,16 +6,7 @@
                 :lg="16"
                 :xs="24"
             >
-                 <el-card :body-style="{ padding: '0px' }" class="card" >
-                    <img :src="arr.imgurl" class="image">
-                    <div style="padding: 14px;">
-                        <span>好吃的汉堡</span>
-                        <div class="bottom clearfix">
-                            <time class="time">111</time>
-                            <el-button type="text" class="button">操作按钮</el-button>
-                        </div>
-                    </div>
-                </el-card>
+                 <img src="@/assets/home/hotelLogo.jpg" alt="">
             </el-col>
             <el-col
                 class="tab"
@@ -25,14 +16,10 @@
                 :xs="12"
                 :key="index"
             >
-                <el-card :body-style="{ padding: '0px' }">
+                <el-card :body-style="{ padding: '0px'}">
                     <img :src="item.imgurl" class="image">
                     <div style="padding: 14px;">
-                        <span>好吃的汉堡</span>
-                        <div class="bottom clearfix">
-                            <time class="time">111</time>
-                            <el-button type="text" class="button">操作按钮</el-button>
-                        </div>
+                        <span>{{item.title}}</span>
                     </div>
                 </el-card>
             </el-col>
@@ -45,57 +32,18 @@ export default {
     name:'Hotel',
     data () {
         return{
-            arr:{
-        address: "北京市丰台区王佐镇青龙湖公园",
-        cityId: "",
-        comm_cnt: null,
-        grade: "AAA",
-        imgurl: "http://pic5.40017.cn/01/000/8f/2a/rBANC1lCWzmAXuNTAAQAAEtkR4s881_240x135_00.jpg",
-        price_min: "29",
-        sid: "18241",
-        title: "青龙湖公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_18241.html",
-    },
             list:[{
-        address: "北京市丰台区王佐镇青龙湖公园",
-        cityId: "",
-        comm_cnt: null,
-        grade: "AAA",
-        imgurl: "http://pic5.40017.cn/01/000/8f/2a/rBANC1lCWzmAXuNTAAQAAEtkR4s881_240x135_00.jpg",
-        price_min: "29",
-        sid: "18241",
-        title: "青龙湖公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_18241.html",
+            imgurl: "@/../static/list1.jpg",
+            title: "上海三湘大厦",
     },  {
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+        imgurl: "@/../static/list2.jpg",
+        title: "桔子酒店",
     },{
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "AAA",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+        imgurl: "@/../static/list4.jpg",
+        title: "深圳中南海怡酒店 ",
     },{
-        address: "北京市房山区韩村河镇",
-        cityId: "",
-        comm_cnt: null,
-        grade: "",
-        imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-        price_min: "0",
-        sid: "20655",
-        title: "北京上方山国家森林公园",
-        url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
+        imgurl: "@/../static/list3.jpg",
+        title: "正熙国际酒店",
     }]
         }
     },
@@ -148,7 +96,7 @@ export default {
       clear: both
   }
   .el-row{
-      padding-right: 10px;
+      padding-right: 0px;
   }
   .el-col{
       margin-bottom: 10px;
@@ -157,6 +105,12 @@ export default {
       .card{
           height: 328px;
       }
+      .el-row{
+      padding-right: 10px;
+  }
+  }
+  .image{
+      height: 200px;
   }
 </style>
 
