@@ -97,13 +97,9 @@ export default {
        },2000)
     },
     created(){
-        //http://apis.haoservice.com/lifeservice/travel/cityList?key=您申请的APPKEY
            let cityId = this.cityId ? 0 : this.cityId;
-            console.log(this.cityId);
           this.http.get(`/jdList/lifeservice/travel/scenery?page=1&cid=${this.cityId}&key=f33fcef5c3574e53908d5c3620fd6d39`)
-        //   this.http.get(`/jdList/lifeservice/travel/cityList?key=f33fcef5c3574e53908d5c3620fd6d39`)
                  .then(res=>{
-                     console.log(res);
                         this.list = res.data.result.splice(0,8);
                         this.loading = false;
                  })

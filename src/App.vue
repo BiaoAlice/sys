@@ -50,6 +50,9 @@ export default {
       width: 280px !important;
       left: -50px !important;
     }
+    .cell{
+          min-width: 100px;
+        }
 }
 @media screen and (min-width: 501px) {
     .demo-table-expand {

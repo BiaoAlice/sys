@@ -28,17 +28,17 @@
                             >
                             </el-table-column>
                             <el-table-column
+                            prop="msg.start"
+                            label="出发城市">
+                            </el-table-column>
+                            <el-table-column
                             prop="msg.time"
                             sortable
                             label="出发时间">
                             </el-table-column>
                             <el-table-column
-                            prop="msg.start"
-                            label="出发城市">
-                            </el-table-column>
-                            <el-table-column
-                            prop="msg.end"
-                            label="到达城市">
+                            prop="msg.startTime"
+                            label="出发时刻">
                             </el-table-column>
                         </el-table>
                     </div>

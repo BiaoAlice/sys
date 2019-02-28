@@ -52,15 +52,15 @@ export default {
             list:[
                 {
                     id:1,
-                    title:"中国铁路官方微信"
+                    title:"中国铁路微信"
                 },
                 {
                     id:2,
-                    title:"中国铁路官方微博"
+                    title:"中国铁路微博"
                 },
                 {
                     id:3,
-                    title:"12306官方公众号"
+                    title:"12306公众号"
                 },
                 {
                     id:4,
