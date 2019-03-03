@@ -28,17 +28,11 @@
                             >
                             </el-table-column>
                             <el-table-column
-                            prop="msg.start"
-                            label="出发城市">
-                            </el-table-column>
-                            <el-table-column
-                            prop="msg.time"
-                            sortable
-                            label="出发时间">
-                            </el-table-column>
-                            <el-table-column
-                            prop="msg.startTime"
-                            label="出发时刻">
+                                label="详情"
+                            >
+                                <template slot-scope="scope">
+                                    <el-button @click="detail(scope.row)" type="text" size="small">查看</el-button>
+                                </template>
                             </el-table-column>
                         </el-table>
                     </div>
@@ -177,6 +171,24 @@ export default {
                     }
                 })
             }
+        },
+        detail(row){
+            let {code,start,end,time,startTime,endTime,price} = row.msg;
+            this.$alert(`<div>
+                            <ul style="list-style:none">
+                                <li>车次：${code}</li>
+                                <li>出发城市：${start}</li>
+                                <li>到达城市：${end}</li>
+                                <li>日期：${time}</li>
+                                <li>出发日期：${startTime}</li>
+                                <li>到达日期：${endTime}</li>
+                                <li>票价：${price}</li>
+                            </ul>
+                        </div>`, '详细信息', {
+          dangerouslyUseHTMLString: true,
+           callback: action => {
+           }
+        })
         }
     },
     created(){
@@ -205,7 +217,6 @@ export default {
                 token: localStorage.getItem('token')
             }
         }).then(res=>{
-            console.log(res)
                 if(res.data.data != ''){
                     this.show=false;
                    this.orderList = res.data.data;
@@ -297,5 +308,4 @@ export default {
     .el-radio{
         width:70px;
     }
-  
 </style>

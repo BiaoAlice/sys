@@ -77,11 +77,11 @@ export default {
     margin: 0;
   }
   
-  .el-carousel__item:nth-child(2n) {
+  .swiper .el-carousel__item:nth-child(2n) {
     background-image: linear-gradient(120deg, #fccb90 0%, #d57eeb 100%);
   }
   
-  .el-carousel__item:nth-child(2n+1) {
+  .swiper .el-carousel__item:nth-child(2n+1) {
     background-image: linear-gradient(to top, #9890e3 0%, #b1f4cf 100%);
   }
   
@@ -96,11 +96,7 @@ export default {
   .center .el-form-item__content{
     margin-left: 0 !important;
   }
-
-    .el-table_1_column_1  .cell{
-        white-space:nowrap;
-        overflow:hidden;
-        text-overflow:ellipsis; 
-    }
- 
+  .cell{
+    text-align: center;
+  }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="swiper">
+    <div class="swiper1">
         <div class="block">
             <el-carousel> 
                 <el-carousel-item v-for="(item,index) in imgList" :key="index">
@@ -26,7 +26,7 @@ export default {
         width:100%;
         height: auto;
     }
-    .swiper{
+    .swiper1{
         margin-bottom: 10px;
     }
 </style>

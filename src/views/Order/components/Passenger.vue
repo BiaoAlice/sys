@@ -1,7 +1,6 @@
 <template>
     <div class="passenger">
-        <h3>乘机人</h3>
-        <p>选择乘机人</p>
+        <h3>乘客</h3>
         <el-form label-position="left" label-width="90px" :model="formLabelAlign">
             <el-form-item label="姓名">
                 <el-input v-model="formLabelAlign.name" disabled></el-input>
