@@ -1,13 +1,13 @@
 <template>
     <div class="hotel">
         <el-row :gutter="10">
-            <el-col
+            <!-- <el-col
                 :md="16"
                 :lg="16"
                 :xs="24"
             >
                  <img src="@/assets/home/hotelLogo.jpg" alt="">
-            </el-col>
+            </el-col> -->
             <el-col
                 class="tab"
                 v-for="(item,index) in list"
@@ -41,19 +41,8 @@ export default {
     },{
         imgurl: "@/../static/list4.jpg",
         title: "深圳中南海怡酒店 ",
-    },{
-        imgurl: "@/../static/list3.jpg",
-        title: "正熙国际酒店",
     }]
         }
-    },
-    created () {
-        // http://apis.haoservice.com/lifeservice/travel/HotelList?cityid=37&page=1&key=您申请的APPKEY
-        // this.http.get('/jdList/lifeservice/travel/HotelList?cityid=37&page=1&key=f33fcef5c3574e53908d5c3620fd6d39')
-        //          .then(res=>{
-        //              console.log(res);
-                     
-        //          })
     }
 }
 </script>

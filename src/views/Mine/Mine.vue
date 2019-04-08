@@ -107,7 +107,8 @@ export default {
     },
     methods:{
         submit(){
-            if(this.radio2!=null && this.payPsd == this.price.payPsd){
+            let payPassword = window.localStorage.getItem("payPsd");
+            if(this.radio2!=null && payPassword == this.price.payPsd){
                 this.http.get('/api/user/updata',{
                     params:{
                         token:localStorage.getItem("token"),
@@ -166,6 +167,7 @@ export default {
                             type:'success'
                         });
                         this.$store.commit("changeStudentPayPsd",this.form.payPsd);
+                        localStorage.setItem("payPsd",this.form.payPsd);
                         this.form.logPsd="";
                         this.form.payPsd= "";
                     }
