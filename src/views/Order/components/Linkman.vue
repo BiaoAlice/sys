@@ -56,8 +56,7 @@ export default {
                         });
                         return ;
             }
-                        console.log(this.balance);
-
+            console.log(this.balance);
             if(this.balance < this.orderMsg.price){
                 this.$message({
                             duration: 2000,

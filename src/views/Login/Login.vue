@@ -76,10 +76,12 @@
                                      localStorage.setItem('userName',res.data.name);
                                      localStorage.setItem('studentId',res.data.studentId);
                                      localStorage.setItem('payPsd',res.data.studentPayPsd);
+                                     localStorage.setItem("balance",res.data.balance);
                                      let userName = localStorage.getItem('userName');
                                      let studentId = localStorage.getItem('studentId');
                                      let payPsd = localStorage.getItem('payPsd');
                                      let balance = localStorage.getItem('balance');
+                                     console.log(balance);
                                      this.$store.commit('changeUserName',userName)
                                      this.$store.commit('changeStudentId',studentId);
                                      this.$store.commit('changeStudentPayPsd',payPsd);
