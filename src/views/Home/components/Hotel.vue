@@ -1,13 +1,6 @@
 <template>
     <div class="hotel">
         <el-row :gutter="10">
-            <!-- <el-col
-                :md="16"
-                :lg="16"
-                :xs="24"
-            >
-                 <img src="@/assets/home/hotelLogo.jpg" alt="">
-            </el-col> -->
             <el-col
                 class="tab"
                 v-for="(item,index) in list"

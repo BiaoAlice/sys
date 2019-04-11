@@ -3,7 +3,7 @@
          v-loading="loading"
         element-loading-text="拼命加载中"
         element-loading-spinner="el-icon-loading"
-        element-loading-background="rgba(0, 0, 0, 0.8)"
+        element-loading-background="rgba(200, 200, 200, 0.8)"
     >
         <el-row  :gutter="20">
             <el-col
@@ -39,47 +39,6 @@ export default {
         return{
             loading:true,
             list:[]
-    //         list:[{
-    //     address: "北京市丰台区王佐镇青龙湖公园",
-    //     cityId: "",
-    //     comm_cnt: null,
-    //     grade: "AAA",
-    //     imgurl: "http://pic5.40017.cn/01/000/8f/2a/rBANC1lCWzmAXuNTAAQAAEtkR4s881_240x135_00.jpg",
-    //     price_min: "29",
-    //     sid: "18241",
-    //     title: "青龙湖公园",
-    //     url: "http://www.ly.com/scenery/BookSceneryTicket_18241.html",
-    // },  {
-    //     address: "北京市房山区韩村河镇",
-    //     cityId: "",
-    //     comm_cnt: null,
-    //     grade: "",
-    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-    //     price_min: "0",
-    //     sid: "20655",
-    //     title: "北京上方山国家森林公园",
-    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    // },{
-    //     address: "北京市房山区韩村河镇",
-    //     cityId: "",
-    //     comm_cnt: null,
-    //     grade: "AAA",
-    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-    //     price_min: "0",
-    //     sid: "20655",
-    //     title: "北京上方山国家森林公园",
-    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    // },{
-    //     address: "北京市房山区韩村河镇",
-    //     cityId: "",
-    //     comm_cnt: null,
-    //     grade: "",
-    //     imgurl: "http://pic3.40017.cn/scenery/destination/2015/04/30/09/RAmPSU_240x135_00.jpg",
-    //     price_min: "0",
-    //     sid: "20655",
-    //     title: "北京上方山国家森林公园",
-    //     url: "http://www.ly.com/scenery/BookSceneryTicket_20655.html",
-    // }]
         }
     },
     methods:{
@@ -90,11 +49,6 @@ export default {
     },
     computed:{
         ...mapState(["cityId"])
-    },
-    beforeCreate(){
-       setTimeout(()=>{
-            this.loading=false
-       },2000)
     },
     created(){
            let cityId = this.cityId ? 0 : this.cityId;
@@ -112,7 +66,6 @@ export default {
 <style scoped>
     .scenic{
         padding:0 10px;
-        /* min-height: 300px; */
     }
     @media screen and (min-width:501px) {
         .scenic{
