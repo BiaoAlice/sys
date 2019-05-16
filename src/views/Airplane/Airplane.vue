@@ -31,13 +31,6 @@ export default {
         swiper:Swiper,
         notice:Notice
     },
-    created (){
-        // console.log(this.cityList)
-        // this.http.get('/api/citylist/getlist')
-        //          .then(res=>{
-        //              this.cityListArr = res.data.data[0].cities;
-        //          })
-    }
 }
 </script>
 

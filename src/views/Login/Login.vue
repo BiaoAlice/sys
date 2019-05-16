@@ -31,8 +31,8 @@
         name: 'Login',
         data () {
             return{
-                studentId:'',
-                studentPsd:''
+                studentId:'201513007940',
+                studentPsd:'123456'
             }
         },
         methods:{
@@ -80,8 +80,7 @@
                                      let userName = localStorage.getItem('userName');
                                      let studentId = localStorage.getItem('studentId');
                                      let payPsd = localStorage.getItem('payPsd');
-                                     let balance = localStorage.getItem('balance');
-                                     console.log(balance);
+                                     let balance = localStorage.getItem('balance');;
                                      this.$store.commit('changeUserName',userName)
                                      this.$store.commit('changeStudentId',studentId);
                                      this.$store.commit('changeStudentPayPsd',payPsd);

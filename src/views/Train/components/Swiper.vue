@@ -12,7 +12,6 @@
             <p>{{item.start2}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">¥</span> {{item.price2}} <span class="gray">起</span></p>
             <p>{{item.start3}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="red">¥</span> {{item.price3}} <span class="gray">起</span></p>
            </el-col>
-          
        </el-row>
     </div>
 </template>

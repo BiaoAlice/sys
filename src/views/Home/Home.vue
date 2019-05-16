@@ -54,6 +54,9 @@ export default {
                 .then(res=>{
                     this.cityList = res.data.data;
                 })
+    },
+    beforeDestroy() {
+      this.$store.commit('changeCityId',0);
     }
 }
 </script>

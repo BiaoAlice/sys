@@ -28,7 +28,7 @@ export default {
             formLabelAlign: {
                 name: '',
                 tell: '',
-                payPsd:''
+                payPsd:123456
             },
             show:true
         }
@@ -56,7 +56,6 @@ export default {
                         });
                         return ;
             }
-            console.log(this.balance);
             if(this.balance < this.orderMsg.price){
                 this.$message({
                             duration: 2000,
@@ -84,7 +83,7 @@ export default {
                 }
                     let day = new Date().Format("yyyy-MM-dd");
                         let {code , price ,start,end,startTime,endTime,time} = this.orderMsg;
-                        let orderId = this.userId +day.replace(/-/g,'')+ Math.round(Math.random()*1000+9000);
+                        let orderId = this.userId +day.replace(/-/g,'')+ Math.round(Math.random()*9000+1000);
                         this.http.get('/api/order/add',{
                             params:{
                                 studentId:this.userId,
@@ -113,8 +112,6 @@ export default {
                             return;
                         }
                         let money = parseInt(this.balance) - parseInt(price);
-                        console.log(money);
-                        console.log(price);
                         this.http.get('/api/user/money',{
                             params:{
                                 token:localStorage.getItem("token"),

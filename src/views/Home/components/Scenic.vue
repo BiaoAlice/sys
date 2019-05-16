@@ -43,7 +43,6 @@ export default {
     },
     methods:{
         to(url){
-            console.log(url);
             window.open(url);
         }
     },
@@ -51,7 +50,7 @@ export default {
         ...mapState(["cityId"])
     },
     created(){
-           let cityId = this.cityId ? 0 : this.cityId;
+          let cityId = this.cityId == 0 ? 0 : this.cityId;
           this.http.get(`/jdList/lifeservice/travel/scenery?page=1&cid=${this.cityId}&key=f33fcef5c3574e53908d5c3620fd6d39`)
                  .then(res=>{
                         this.list = res.data.result.splice(0,8);

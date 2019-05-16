@@ -95,7 +95,7 @@ export default {
             },
             price:{
                 name:'',
-                payPsd:''
+                payPsd:123456
             },
             radio2: null,
             payPsd:'',

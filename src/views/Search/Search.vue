@@ -116,7 +116,6 @@ export default {
                     });
                 return;
             }
-            // console.log('搜索成功');
             if(this.type == 'air'){
                 let num = Math.round(Math.random()*5+1);
             this.http.get(`/ticket/flight/line/query?key=275a8c8708ce0&start=${this.start}&end=${this.end}`)

@@ -4,7 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
-        cityId:'0',
+        cityId:0,
         userName:localStorage.getItem('userName'),
         price:0,
         userId:localStorage.getItem('studentId'),
